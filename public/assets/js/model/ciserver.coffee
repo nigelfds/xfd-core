@@ -74,6 +74,8 @@
       traditional: true
       error: ->
         CONFIG.request_in_progress = false
+        console.log(CONFIG)
+        console.trace()
         host = CONFIG.host + ":" + CONFIG.port + CONFIG.context
         app.renderFlash "error", "Couldn't connect to server #{host}"
         projects.emptyProjects()

@@ -69,14 +69,14 @@ task :stage => [:minifycss, :minifyjs] do
   Dir["public/*.html"].each { |f| cp f, 'target/.' }
   cp_r "public/assets/js/views", "target/assets/js"
   cp_r "public/assets/images", "target/assets"
-  cp_r "public/facebox", "target"
+  cp_r "facebox/", "target/facebox/"
   cp "public/favicon.ico", "target"
   cp "public/robots.txt", "target"
 end
 
 desc "Run the Sinatra server"
 task :sinatra => :stage do
-  require 'sinatra_server'
+  require_relative 'sinatra_server'
   XFD.run!
 end
 
